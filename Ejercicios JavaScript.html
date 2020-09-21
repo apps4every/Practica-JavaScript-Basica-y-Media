@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>Practica js 38</title>
+    <title>Ejercicios Javasript básico y medio</title>
 </head>
 <body>
 <!-- inicio ejercicio 38 -->
@@ -253,7 +253,7 @@
     <div id="resultados_mac_ejer43"></div>
     <hr>
     <script>
-        let factoresPrimos = []; //Aquí introducimos el resultado
+        
         function obtenerResultado_mac_ejer43()
         {
             let numero_mac_ejer43 = document.getElementById("numero_mac_ejer43").value;
@@ -442,6 +442,396 @@
         }
     </script>
     <!-- final ejercicio 45 -->
+
+    <p class="textoejercicio">046 Escriba un ejercicio de JavaScript para obtener la extensión de un nombre de archivo.
+    </p>
+     
+    <input type="file" id="myFile" required><br>
+    <input type="button" id="btn" name="btn" value="extensión" onclick="obtnerextension()"><br>
+     
+    <div id="divresultado"></div>
+    <br>
+    <div id="codigojavascript"></div>
+    <hr>
+    <script lang="JavaScript">
+        const obtnerextension = function ()
+        {
+                
+                var pathfichero = document.getElementById("myFile").value;
+                if (!(document.getElementById("myFile").value))
+                {   alert ("selecciona un archivo");
+                    document.getElementById("myFile").click();
+                    return (false);
+                } 
+                
+                var posicionultimopunto = pathfichero.lastIndexOf(".");
+                var resultado = pathfichero.substring(posicionultimopunto + 1);
+                if (posicionultimopunto < 0) 
+                {
+                    document.getElementById("divresultado").innerText ="El fichero seleccionado no tiene extensión";
+                }
+                else 
+                {    document.getElementById("divresultado").innerText ="La extensión del archivo es " + resultado;
+                }
+
+
+                /* visualizacion */
+                document.getElementById("codigojavascript").innerHTML=  "<pre>" + obtnerextension + "</pre>";
+        }    
+
+    </script>
+
+<p class="textoejercicio">R:14 047 Escriba un programa JavaScript para comprobar si todos los dígitos de un número dado son iguales o no.
+</p>
+ 
+<input type="number" min="0" max="99999999999" id="entrada">
+
+
+<input type="button" id="btn" name="btn" value="comprobar" onclick="myfuncion_ejer47()"><br>
+ 
+<div id="divresultado"></div>
+<br>
+<div id="codigojavascript"></div>
+<hr>
+<script lang="JavaScript">
+const myfuncion_ejer47 = function ()
+{
+    var resultado ="SI";
+    document.getElementById("divresultado").innerText="";
+    document.getElementById("codigojavascript").innerHTML="";
+
+
+        var numero = document.getElementById("entrada").value;
+        var patron = /^\d+$/; //Expresión regular para aceptar solo números enteros
+       
+        if (patron.test(numero)) {    
+            
+            var caracter = numero.charAt(0);        
+            for (var i = 1; i< numero.length; i++) {
+                var nuevocaracter = numero.charAt(i);
+                if (caracter != nuevocaracter)
+                {
+                    resultado="NO";
+                            break;
+                }
+            }
+           
+        }else {
+        alert("el valor del número debe ser entero positivo");
+        numero.focus();
+        return (false);
+        }
+        document.getElementById("divresultado").innerText ="Los digitos "+ resultado + " son todos iguales";
+
+
+        /* visualizacion */
+        document.getElementById("codigojavascript").innerHTML=  "<pre>" + myfuncion_ejer47 + "</pre>";
+}    
+
+</script>
+<p class="textoejercicio">R:140 048 Escriba un programa de JavaScript para encontrar la cantidad de elementos que se presentan en ambos arreglos dados</p>
+
+    <input type="button" id="btn" name="btn" value="comprobar" onclick="myfuncion_ejer48()"><br>
+     
+    <div id="divresultado"></div>
+    <br>
+    <div id="codigojavascript"></div>
+    <hr>
+    <script lang="JavaScript">
+        const myfuncion_ejer48 = function ()
+        {
+            let arraynumeros1 = new Array();
+            let arraynumeros2 = new Array();
+
+            let n1 = Math.round( (Math.random () * 100));
+            let n2 = Math.round( (Math.random () * 100));
+for (let i=0;i< n1; i ++){
+
+    arraynumeros1.push (Math.round( (Math.random () * 100)));
+}
+           
+for (let i=0;i< n2; i ++){
+
+arraynumeros2.push (Math.round( (Math.random () * 100)));
+}
+           
+ 
+            document.getElementById("divresultado").innerText="";
+
+            document.getElementById("divresultado").innerHTML="Array 1: <br>" + arraynumeros1;
+            document.getElementById("divresultado").innerHTML+="<br>";
+            document.getElementById("divresultado").innerHTML+="Elementos de Array 1: " + arraynumeros1.length;
+            document.getElementById("divresultado").innerHTML+="<br>";
+            document.getElementById("divresultado").innerHTML+="Array 2: <br>" + arraynumeros2;
+            document.getElementById("divresultado").innerHTML+="<br>";
+            document.getElementById("divresultado").innerHTML+="Elementos de Array 2: " + arraynumeros2.length;
+
+                /* visualizacion */
+                document.getElementById("codigojavascript").innerHTML=  "<pre>" + myfuncion_ejer48 + "</pre>";
+        }    
+
+    </script>
+    <p class="textoejercicio">049 Escriba un programa JavaScript para simplificar una ruta absoluta dada para un archivo en estilo Unix.
+    </p>
+
+    <input type="button" id="btn" name="btn" value="comprobar" onclick="myfuncion_ejer49()"><br>
+     
+    <div id="divresultado"></div>
+    <br>
+    <div id="codigojavascript"></div>
+<hr>
+<script lang="JavaScript">
+    const myfuncion_ejer49 = function ()
+    {
+       
+       const ruta = "/var/log/mysql/error.log";
+
+       let str =ruta;
+
+       document.getElementById("divresultado").innerHTML= str + "<br>";;
+
+       let posicionultimopunto =  str.lastIndexOf("/") ;
+       do {
+        posicionultimopunto =  str.lastIndexOf("/") ;
+     
+       
+        document.getElementById("divresultado").innerHTML+=str.substring(posicionultimopunto + 1) + "<br>";
+        
+        str = str.substring(0,posicionultimopunto );
+          
+        } while (str!="" && posicionultimopunto >0);
+
+
+     
+
+
+
+            /* visualizacion */
+            document.getElementById("codigojavascript").innerHTML=  "<pre>" + myfuncion_ejer49 + "</pre>";
+    }    
+
+</script>
+<p class="textoejercicio">050 Escriba un programa JavaScript para ordenar las cadenas de una matriz dada de cadenas en el orden de longitudes crecientes. Nota: No cambie el orden si las longitudes de dos cadenas son iguales.
+</p>
+
+<input type="button" id="btn" name="btn" value="comprobar" onclick="myfuncion_ejer50()"><br>
+ 
+<div id="divresultado"></div>
+<br>
+<div id="codigojavascript"></div>
+<hr>
+<script lang="JavaScript">
+    const myfuncion_ejer50 = function ()
+    {
+
+    
+
+       var arraycadenas = ["la mas larga","casa", "arbol", "caserio", "pepe", "roma", "a", "romo", "cero"];
+       document.getElementById("divresultado").innerHTML = arraycadenas + "<br>";
+
+
+       arraycadenas.sort(function(a, b){return a.length-b.length});
+       document.getElementById("divresultado").innerHTML += arraycadenas;
+
+            /* visualizacion */
+            document.getElementById("codigojavascript").innerHTML=  "<pre>" + myfuncion_ejer50 + "</pre>";
+    }    
+
+</script>
+
+<p class="textoejercicio">051 Escriba un programa JavaScript para romper la dirección de una URL y poner su parte en
+    una matriz. Nota: estructura de la URL: //.org [/] y es posible que no haya parte en la dirección.
+</p>
+
+<input type="text" id="txturl" style="width:80%" value="https://www.w3schools.com/js/js_array_methods.asp"> <br>
+
+<input type="button" id="btn" name="btn" value="comprobar" onclick="myfuncion_ejer51(0)"><br>
+
+<div id="divresultado">
+    <ul id="lista"></ul>
+</div>
+<br>
+<div id="codigojavascript"></div>
+
+<div style="width:80%; height: 100%;">
+    <pre>
+    const myfuncion_ejer51 = function     ( valor)
+    {
+
+
+        let url = document.getElementById("txturl").value;
+        let matriz=new Array();
+      
+        let url1 =  url.substr(url.indexOf("://")+3, url.length);
+        matriz = url1.<strong>split</strong>("/");
+
+        if (url.indexOf("://") != -1)
+            matriz.<strong>splice</strong>(0, 0,   url.substr(0,url.indexOf("://")+3));
+
+        /* visualizacion */
+        for ( i=0;i&lt;matriz.length;i++) {
+            let li = document.createElement("li");
+            li.innerText=matriz[i];
+            document.getElementById("lista").appendChild(li);
+        }
+    }
+</pre>
+</div>
+<hr>
+<script lang="JavaScript">
+
+
+
+
+    const myfuncion_ejer51 = function (valor) {
+
+
+        let url = document.getElementById("txturl").value;
+        let matriz = new Array();
+
+        let url1 = url.substr(url.indexOf("://") + 3, url.length);
+        matriz = url1.split("/");
+
+        if (url.indexOf("://") != -1)
+            matriz.splice(0, 0, url.substr(0, url.indexOf("://") + 3));
+
+
+
+
+
+        /* visualizacion */
+        for (i = 0; i < matriz.length; i++) {
+            let li = document.createElement("li");
+            li.innerText = matriz[i];
+            document.getElementById("lista").appendChild(li);
+        }
+
+     //   document.getElementById("codigojavascript").innerHTML = "<pre> var myfuncion_ejer51  = " + myfuncion_ejer51 + "</pre>";
+    }
+
+
+
+
+</script>
+
+<p class="textoejercicio">052 Escriba un programa JavaScript para encontrar el número entero máximo n tal que 1 + 2 + ... + n <= un número entero dado. 
+
+</p>
+
+<input type="button" id="btn" name="btn" value="comprobar" onclick="myfuncion_ejer52(0)"><br>
+ 
+<div id="divresultado"></div>
+<br>
+<div id="codigojavascript">
+    <pre>
+        var elemento = Math.round(Math.random() * 1000);
+        var suma=0;
+        let elementos = new Array();
+
+        const myfuncion_ejer52 = function     ( valor)
+        {
+            elementos.push(valor);
+            suma = suma + (valor +1) ;
+
+            if ( suma  &lt;= elemento)
+            {
+                
+                valor++;
+                myfuncion_ejer52 (valor);
+            }
+            else
+               { 
+
+                document.getElementById("divresultado").innerHTML= "Número base: " +elemento  ;
+                document.getElementById("divresultado").innerHTML+= elementos ; 
+                document.getElementById("divresultado").innerHTML+="Número Máximo: " + valor ; 
+
+               }
+        }       
+    </pre>
+</div>
+<hr>
+<script lang="JavaScript">
+
+    var elemento = Math.round(Math.random() * 1000);
+    var suma=0;
+    let elementos = new Array();
+
+    const myfuncion_ejer52 = function     ( valor)
+    {
+        elementos.push(valor);
+        suma = suma + (valor +1) ;
+
+        if ( suma  <= elemento)
+        {
+            
+            valor++;
+            myfuncion_ejer52 (valor);
+        }
+        else
+           { 
+
+            document.getElementById("divresultado").innerHTML= "Número base: " +elemento  + "<br>";
+            document.getElementById("divresultado").innerHTML+= elementos + "<br>"; 
+               
+               document.getElementById("divresultado").innerHTML+="Número Máximo: " + valor + "<br>"; 
+             /* visualizacion */
+            // document.getElementById("codigojavascript").innerHTML=  "<pre> var myfuncion_ejer52  = "+ myfuncion_ejer52 + "</pre>";
+           }
+    }
+
+
+
+</script>
+
+<p class="textoejercicio">053 Escriba un programa JavaScript para calcular la suma de cubos de todos los enteros desde 1 hasta un entero dado.
+</p>
+
+<input type="button" id="btn" name="btn" value="comprobar" onclick="myfuncion_ejer53(0)"><br>
+ 
+<div id="divresultado"></div>
+<br>
+<div id="codigojavascript"></div>
+<hr>
+<script lang="JavaScript">
+
+var elemento =  Math.round(Math.random() * 20) ;
+var suma=0;
+let elementos = new Array();
+
+const myfuncion_ejer53 = function     ( valor)
+{
+    if (suma==0) {
+        elementos = [];
+        elemento =  Math.round(Math.random() * 20) 
+    }
+
+    let cubo = valor*valor*valor;
+    elementos.push(cubo);
+    suma = suma + cubo ;
+
+    if ( valor  < elemento)
+    {
+        
+        valor++;
+        myfuncion_ejer53 (valor);
+    }
+    else
+       { 
+
+        document.getElementById("divresultado").innerHTML= "Número base: " +elemento  + "<br>";
+        document.getElementById("divresultado").innerHTML+= "cubos: " + elementos + "<br>"; 
+           
+           document.getElementById("divresultado").innerHTML+="Número Máximo: " + suma + "<br>"; 
+         /* visualizacion */
+         document.getElementById("codigojavascript").innerHTML=  "<pre> var myfuncion_ejer53  = "+ myfuncion_ejer53 + "</pre>";
+         suma=0;
+       }
+}
+
+
+
+</script>
     <div>
         <p><strong>Ejercicio: 60 Referencia: 16</strong><BR><br><em> Escriba un programa JavaScript para calcular la diferencia absoluta entre un número especificado y 19. Devuelve el triple de su diferencia absoluta si el número especificado es mayor que 19.</em></p>
         <pre>
